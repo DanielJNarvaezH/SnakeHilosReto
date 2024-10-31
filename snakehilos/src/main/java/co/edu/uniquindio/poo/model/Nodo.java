@@ -1,29 +1,31 @@
 package co.edu.uniquindio.poo.model;
 
-
 public class Nodo {
     int x, y;
+    int prevX, prevY;
     Nodo siguienteNodo = null;
 
     public Nodo(int x, int y) {
         this.x = x;
         this.y = y;
+        this.prevX = x;
+        this.prevY = y;
     }
 
-    // Method to move the node recursively
+    // Método para mover el nodo recursivamente
     public void mover(int newX, int newY) {
-        int tempX = this.x;
-        int tempY = this.y;
+        prevX = x;
+        prevY = y;
 
-        this.x = newX;
-        this.y = newY;
+        x = newX;
+        y = newY;
 
         if (siguienteNodo != null) {
-            siguienteNodo.mover(tempX, tempY);
+            siguienteNodo.mover(prevX, prevY);
         }
     }
 
-    // Method to get the tail node recursively
+    // Método para obtener la cola
     public Nodo getCola() {
         if (siguienteNodo == null) {
             return this;
